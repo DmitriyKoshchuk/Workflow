@@ -32,12 +32,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
+      - name: Extract metadata 
         id: meta
         uses: docker/metadata-action@v5.5.1
         with:
-          images: <Docker ID>/workflow
-
+          images: ${{ secrets.DOCKER_USERNAME }}/workflow
       - name: Build and push Docker Image
         uses: docker/build-push-action@v5
         with:
